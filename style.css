@@ -94,6 +94,33 @@ a:hover {
   padding: 2px 16px;
 }
 
+form label,
+textarea,
+input {
+  display: none;
+}
+.hidden-message {
+  display: none;
+}
+marquee {
+  color: green;
+  text-transform: uppercase;
+}
+#wait-message {
+  display: block;
+  color: #014fa7;
+  font-weight: bold;
+  margin-top: -2rem;
+}
+#button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#my-button {
+  display: none;
+}
+
 /* media query */
 
 @media screen and (max-width: 780px) {
@@ -130,6 +157,11 @@ a:hover {
     flex-direction: column;
     justify-content: center;
   }
+  marquee {
+    color: rgb(5, 200, 34);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
   .box {
     width: 100%;
     height: 100vh;
@@ -147,7 +179,7 @@ a:hover {
     box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     width: 100%;
-    margin-top: 6vh;
+    margin-top: 3vh;
     display: flex;
     text-align: center;
   }
@@ -158,5 +190,9 @@ a:hover {
 
   .container {
     padding: 2px 16px;
+  }
+  #my-button,
+  #wait-message {
+    margin-top: -2rem;
   }
 }

@@ -14,7 +14,7 @@
 
 </head>
 
-<body onload="getLocation()">
+<body onload="getLocation(), button()">
     <div class="content">
         <nav>
             <div class="logo">
@@ -35,6 +35,10 @@
             </div>
         </nav>
 
+        <div class="loc">
+            <marquee class="mt-5">Please allow this site to access your location</marquee>
+        </div>
+
         <div class="box">
             <div class="profile">
                 <div class="card">
@@ -43,30 +47,56 @@
                         <h3><b>Vikas Ipar</b></h3>
                         <h5><b>8329909096</b></h5>
                         <br>
-                        <button type="button" onclick="sendEmail()" class="btn btn-danger"><b>Report</b></button>
-                        <br><br>
+
+                        <form action="https://formspree.io/f/mjvdzgbg" method="POST">
+                            <div class="form-group row">
+                                <label for="staticEmail">Email : </label>
+                                <input type="email" value="vikasipar.scoe.it@gmail.com">
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword">Message: </label>
+                                <textarea type="textarea" class="form-control hidden-message" id="message"
+                                    placeholder="Your Message" name="message">
+                                    </textarea>
+                            </div>
+
+                            <div id="wait-message">Please wait... <span id="timer">7</span> seconds </div>
+                            <div id="button-container">
+                                <button id="my-button" type="submit" class="btn btn-danger"
+                                    style="display: none;"><b>Report</b></button>
+                            </div>
+                            <br><br>
+
+                        </form>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
-    <!-- send email on click event -->
-    <script>
-        function sendEmail() {
-            const subject = "CareTracker Emergency Alert!";
-            const recipient = ["vickyipar01@gmail.com", "caretracker1.0@gmail.com"];
-            const maplink =
-                "https://www.google.com/maps?q=" + latitude + "," + longitude;
-            const body = "Current Location = " + maplink;
+    <!-- <script>
+        // button wait
+        window.onload = function () {
+            var seconds = 5;
+            var timerElement = document.getElementById("timer");
 
-            const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(
-                subject
-            )}&body=${encodeURIComponent(body)}`;
+            var countdown = setInterval(function () {
+                seconds--;
+                timerElement.textContent = seconds;
 
-            window.location.href = mailtoLink;
+                if (seconds <= 0) {
+                    clearInterval(countdown);
+                    showButton();
+                }
+            }, 1000);
+        };
+
+        function showButton() {
+            document.getElementById("wait-message").style.display = "none";
+            document.getElementById("my-button").style.display = "block";
         }
-    </script>
+
+    </script> -->
 </body>
 
 </html>

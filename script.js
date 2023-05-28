@@ -6,6 +6,27 @@ function getLocation() {
   }
 }
 
+// button wait
+function button() {
+  var seconds = 7;
+  var timerElement = document.getElementById("timer");
+
+  var countdown = setInterval(function () {
+    seconds--;
+    timerElement.textContent = seconds;
+
+    if (seconds <= 0) {
+      clearInterval(countdown);
+      showButton();
+    }
+  }, 1000);
+}
+
+function showButton() {
+  document.getElementById("wait-message").style.display = "none";
+  document.getElementById("my-button").style.display = "block";
+}
+
 var latitude;
 var longitude;
 
@@ -19,6 +40,13 @@ function showPosition(position) {
 
   // Store the URL in a variable accessible to the sendEmail() function
   window.locationUrl = url;
+
+  var msg = document.getElementById("message");
+  msg.value =
+    "Current Location = https://www.google.com/maps?q=" +
+    latitude +
+    "," +
+    longitude;
 }
 
 function showError(error) {
